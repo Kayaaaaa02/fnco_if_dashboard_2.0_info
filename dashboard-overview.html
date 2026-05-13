@@ -218,11 +218,11 @@
 
   /* Product UI mockup container — Supabase signature */
   .ui-mockup {
-    background: var(--canvas);
-    border: 1px solid var(--hairline);
+    background: transparent;
+    border: none;
     border-radius: 12px;
-    padding: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    padding: 0;
+    box-shadow: none;
     overflow: hidden;
   }
   .ui-mockup img {
@@ -378,6 +378,35 @@
     gap: 16px;
   }
 
+  /* Horizontal scroll gallery */
+  .mockup-scroll {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 12px;
+    cursor: grab;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+  }
+  .mockup-scroll:active { cursor: grabbing; }
+  .mockup-scroll::-webkit-scrollbar { height: 6px; }
+  .mockup-scroll::-webkit-scrollbar-track { background: var(--canvas-soft); border-radius: 3px; }
+  .mockup-scroll::-webkit-scrollbar-thumb { background: var(--hairline-strong); border-radius: 3px; }
+  .mockup-scroll .ui-mockup {
+    flex: 0 0 auto;
+    width: 480px;
+    height: 360px;
+    display: flex;
+    flex-direction: column;
+    scroll-snap-align: start;
+  }
+  .mockup-scroll .ui-mockup img {
+    flex: 1;
+    object-fit: cover;
+    min-height: 0;
+  }
+
   @media (max-width: 1024px) {
     .evo-grid, .rollout-row { grid-template-columns: 1fr; }
     .evo-arrow, .rollout-arrow { transform: rotate(90deg); padding: 4px 0; }
@@ -415,7 +444,6 @@
     <ul>
       <li><a href="#overview">Overview</a></li>
       <li><a href="#modules">Modules</a></li>
-      <li><a href="#part-02">Pipeline</a></li>
       <li><a href="#part-03">Impact</a></li>
       <li><a href="#part-04">Roll-out</a></li>
     </ul>
@@ -429,7 +457,7 @@
     <div style="max-width: 880px; display: flex; flex-direction: column; gap: 24px;">
       <span class="pill-soft">
         <span class="dot-emerald"></span>
-        Strategic Report · 2026.03.16
+        Strategic Report · 2026.05.13
       </span>
       <p class="eyebrow-strong">AI를 활용한 마케팅의 변화</p>
       <h1 class="display-xxl">
@@ -442,7 +470,6 @@
       </p>
       <div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 4px;">
         <a href="#modules" class="btn-primary">모듈 살펴보기</a>
-        <a href="#part-02" class="btn-outline">파이프라인 5단계 보기</a>
       </div>
     </div>
 
@@ -558,44 +585,44 @@
   <section id="modules" class="section-py" style="display: flex; flex-direction: column; gap: 48px;">
     <div style="max-width: 720px; display: flex; flex-direction: column; gap: 16px;">
       <div class="eyebrow">SYSTEM MODULES</div>
-      <h2 class="display-xl">4개 모듈이 한 사이클을 완성합니다</h2>
-      <p class="body-md ink-mute">
+      <h2 class="display-xl">4개 핵심 기능이 한 사이클을 완성합니다</h2>
+      <p class="body-md ink-mute" style="font-size: 13px; white-space: nowrap;">
         콘텐츠 엔진 · 캠페인 빌더 · 인플루언서 풀 · 인플루언서 컨텐츠 대시보드가 서로 데이터를 주고받으며 캠페인 한 건을 완성합니다.
       </p>
     </div>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
-      <div class="card card-compact">
+      <div class="card-dark card-compact">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
-          <div class="phase-num">01</div>
+          <div class="phase-num" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: #fff;">01</div>
           <div class="eyebrow">MODULE</div>
         </div>
-        <div class="heading-md" style="margin-bottom: 4px;">콘텐츠 엔진</div>
-        <p class="caption ink-mute">UGC 모니터링 · AI 분석</p>
+        <div class="heading-md" style="color: #fff; margin-bottom: 4px;">콘텐츠 엔진</div>
+        <p class="caption" style="color: #9a9a9a;">UGC 모니터링 · AI 분석</p>
       </div>
       <div class="card-dark card-compact">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
           <div class="phase-num" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: #fff;">02</div>
-          <div class="eyebrow">FEATURED</div>
+          <div class="eyebrow">MODULE</div>
         </div>
         <div class="heading-md" style="color: #fff; margin-bottom: 4px;">캠페인 빌더</div>
         <p class="caption" style="color: #9a9a9a;">Phase 1~8 캠페인 운영</p>
       </div>
-      <div class="card card-compact">
+      <div class="card-dark card-compact">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
-          <div class="phase-num">03</div>
+          <div class="phase-num" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: #fff;">03</div>
           <div class="eyebrow">MODULE</div>
         </div>
-        <div class="heading-md" style="margin-bottom: 4px;">인플루언서 풀</div>
-        <p class="caption ink-mute">발굴 · 자산화 · 캠페인 매칭</p>
+        <div class="heading-md" style="color: #fff; margin-bottom: 4px;">인플루언서 풀</div>
+        <p class="caption" style="color: #9a9a9a;">발굴 · 자산화 · 캠페인 매칭</p>
       </div>
-      <div class="card card-compact">
+      <div class="card-dark card-compact">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
-          <div class="phase-num">04</div>
+          <div class="phase-num" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: #fff;">04</div>
           <div class="eyebrow">MODULE</div>
         </div>
-        <div class="heading-md" style="margin-bottom: 4px;">인플루언서 컨텐츠 대시보드</div>
-        <p class="caption ink-mute">컨텐츠 성과 · 인사이트</p>
+        <div class="heading-md" style="color: #fff; margin-bottom: 4px;">인플루언서 컨텐츠 대시보드</div>
+        <p class="caption" style="color: #9a9a9a;">컨텐츠 성과 · 인사이트</p>
       </div>
     </div>
   </section>
@@ -618,8 +645,8 @@
     <div class="card">
       <div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 28px;">
         <div>
-          <div class="heading-lg" style="margin-bottom: 8px;">콘텐츠 UGC 모니터링</div>
-          <p class="body-md ink-mute">세 단계 흐름으로 UGC를 자동 수집·분석하고 별점으로 가치 판단을 남깁니다.</p>
+          <div class="heading-lg" style="margin-bottom: 8px;">SNS UGC 모니터링</div>
+          <p class="body-md ink-mute">세 단계 흐름으로 SNS(Instagram, TikTok, YouTube)에서 UGC를 자동 수집·분석하고 실무자들끼리 별점으로 가치 판단을 남깁니다.</p>
         </div>
         <div class="tag-row">
           <span class="micro-tag">crawler</span>
@@ -665,9 +692,9 @@
         <span class="dot-emerald"></span>
         <span class="eyebrow-strong">MODULE 02 / 캠페인 빌더</span>
       </div>
-      <h2 class="display-lg">Phase 1~8로 캠페인 한 건을 분해합니다</h2>
+      <h2 class="display-lg">Phase 1부터 8단계까지 인플루언서 시딩 캠페인을 설계합니다.</h2>
       <p class="body-md ink-mute">
-        AI 보조와 실무자 의사결정을 8단계로 나눠, 각 Phase가 다음 Phase의 입력이 되도록 설계되어 있습니다.
+        AI가 제안하고 실무자 의사결정 진행하는 프로세스로 진행됩니다.
       </p>
     </div>
 
@@ -675,14 +702,14 @@
       <div class="card card-compact">
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
           <div class="phase-num">01</div>
-          <div class="heading-md">PDA</div>
+          <div class="heading-md">PDA기반 캠페인 컨셉 설계</div>
         </div>
-        <p class="body-md ink-mute">제품 정의와 캠페인 컨셉을 AI가 자동 생성하고 실무진이 다듬습니다.</p>
+        <p class="body-md ink-mute">제품 기획안을 기반으로 캠페인 컨셉을 브랜드가 설정한 PDA(Persona / Desire / Awareness)에 맞춰 AI가 자동 생성하고 실무진이 다듬습니다.</p>
       </div>
       <div class="card card-compact">
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
           <div class="phase-num">02</div>
-          <div class="heading-md">전략</div>
+          <div class="heading-md">캠페인 전략</div>
         </div>
         <p class="body-md ink-mute">메시징·채널·내러티브 아크·정렬 점수로 캠페인 전략을 구조화합니다.</p>
       </div>
@@ -691,21 +718,21 @@
           <div class="phase-num">03</div>
           <div class="heading-md">콘텐츠 로드맵</div>
         </div>
-        <p class="body-md ink-mute">캠페인 기간 동안의 콘텐츠 아크를 시각화해 운영 일정을 한눈에 봅니다.</p>
+        <p class="body-md ink-mute">캠페인 기간 동안의 콘텐츠 아크를 시각화해 채널별 운영 일정을 한눈에 봅니다.</p>
       </div>
       <div class="card card-compact">
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
           <div class="phase-num">04</div>
           <div class="heading-md">콘텐츠 제작</div>
         </div>
-        <p class="body-md ink-mute">5스텝 워크플로우로 AI 이미지·영상을 9:16 세로 비율로 생성합니다.</p>
+        <p class="body-md ink-mute">컨셉을 기반으로 시딩 가이드 기획안과 AI 이미지·영상을 생성합니다.</p>
       </div>
       <div class="card card-compact">
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
           <div class="phase-num">05</div>
           <div class="heading-md">인플루언서 선정</div>
         </div>
-        <p class="body-md ink-mute">AI 매칭과 페르소나 그룹핑으로 캠페인에 맞는 인플루언서를 선정합니다.</p>
+        <p class="body-md ink-mute">인플루언서의 페르소나를 분석하여 캠페인에 맞는 인플루언서를 매칭합니다.</p>
       </div>
       <div class="card card-compact">
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
@@ -719,14 +746,53 @@
           <div class="phase-num">07</div>
           <div class="heading-md">콘텐츠 론칭</div>
         </div>
-        <p class="body-md ink-mute">제작된 콘텐츠를 검수·승인하고 일정에 맞춰 론칭합니다.</p>
+        <p class="body-md ink-mute">업로드 된 인플루언서 시딩 컨텐츠를 자동으로 스크롤하고 인게이지먼트를 측정합니다.</p>
       </div>
       <div class="card card-compact">
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
           <div class="phase-num">08</div>
           <div class="heading-md">모니터링</div>
         </div>
-        <p class="body-md ink-mute">Campaign Hub KPI 영역에서 캠페인 성과를 실시간으로 추적합니다.</p>
+        <p class="body-md ink-mute">캠페인 성과를 일간/주간/전체 기간 등으로 분석하고 효과가 좋았던 기획안을 추적합니다.</p>
+      </div>
+    </div>
+
+    <div class="mockup-scroll">
+      <div class="ui-mockup">
+        <img src="images/STEP%2002-1.png" alt="STEP 02-1" />
+        <div class="ui-mockup-caption">FIG 2-1 · PDA 매트릭스 생성</div>
+      </div>
+      <div class="ui-mockup">
+        <img src="images/STEP%2002-2.png" alt="STEP 02-2" />
+        <div class="ui-mockup-caption">FIG 2-2 · 컨셉 조합 결과</div>
+      </div>
+      <div class="ui-mockup">
+        <img src="images/STEP%2003-1.png" alt="STEP 03-1" />
+        <div class="ui-mockup-caption">FIG 3-1 · 전략 생성</div>
+      </div>
+      <div class="ui-mockup">
+        <img src="images/STEP%2003%20-2.png" alt="STEP 03-2" />
+        <div class="ui-mockup-caption">FIG 3-2 · 내러티브 아크</div>
+      </div>
+      <div class="ui-mockup">
+        <img src="images/STEP%2003-3.png" alt="STEP 03-3" />
+        <div class="ui-mockup-caption">FIG 3-3 · AI 이미지 가이드</div>
+      </div>
+      <div class="ui-mockup">
+        <img src="images/STEP%2004-1.png" alt="STEP 04-1" />
+        <div class="ui-mockup-caption">FIG 4-1 · 타임라인 통합 관리</div>
+      </div>
+      <div class="ui-mockup">
+        <img src="images/STEP%2004-2.png" alt="STEP 04-2" />
+        <div class="ui-mockup-caption">FIG 4-2 · 실시간 광고 전환 알림</div>
+      </div>
+      <div class="ui-mockup">
+        <img src="images/STEP%2005-1.png" alt="STEP 05-1" />
+        <div class="ui-mockup-caption">FIG 5-1 · P.D.A 히트맵</div>
+      </div>
+      <div class="ui-mockup">
+        <img src="images/STEP%2005-2.png" alt="STEP 05-2" />
+        <div class="ui-mockup-caption">FIG 5-2 · 자동 최적화 패널</div>
       </div>
     </div>
   </section>
@@ -742,7 +808,7 @@
       </div>
       <h2 class="display-lg">매번 새로 찾지 않고 풀에서 출발합니다</h2>
       <p class="body-md ink-mute">
-        외부 발굴 툴과 연동해 후보를 확보하고, 콜라보·시딩 이력을 자산으로 축적합니다.
+        Influencer Find Agent과 연동되어 인플루언서 후보를 확보하고,자사 시딩 이력을 자산으로 축적합니다.
       </p>
     </div>
 
@@ -751,22 +817,26 @@
         <div class="eyebrow" style="margin-bottom: 12px;">POOL 01</div>
         <div class="heading-lg" style="margin-bottom: 8px;">인플루언서 찾기 툴 연동</div>
         <p class="body-md ink-mute">
-          외부 인플루언서 발굴 툴과 연결해 후보 인플루언서 데이터를 대시보드 안으로 가져옵니다.
+          Influencer Find Agent과 연동되어 자사 및 경쟁사 인플루언서 데이터를 대시보드 안으로 자동으로 가져옵니다.
         </p>
       </div>
       <div class="card">
         <div class="eyebrow" style="margin-bottom: 12px;">POOL 02</div>
-        <div class="heading-lg" style="margin-bottom: 8px;">나라별 브랜드 콜라보 풀</div>
+        <div class="heading-lg" style="margin-bottom: 8px;">인플루언서 심층 분석</div>
         <p class="body-md ink-mute">
-          국가별로 브랜드와 콜라보한 이력이 있는 인플루언서를 분류해 관리합니다.
+          인플루언서 풀에서 심층 분석을 통해 최근 게시물의 특징과 페르소나를 분석 가능합니다. 분석된 내용을 기반으로 자사 캠페인에 활용 가능합니다.
         </p>
       </div>
-      <div class="card">
-        <div class="eyebrow" style="margin-bottom: 12px;">POOL 03</div>
-        <div class="heading-lg" style="margin-bottom: 8px;">자사 시딩 인플루언서 풀</div>
-        <p class="body-md ink-mute">
-          자사 시딩이 진행됐거나 완료된 인플루언서를 풀로 축적해 다음 캠페인에 즉시 활용합니다.
-        </p>
+    </div>
+
+    <div class="mockup-scroll">
+      <div class="ui-mockup">
+        <img src="images/STEP%2001-1.png" alt="STEP 01 - 인플루언서 크롤링" />
+        <div class="ui-mockup-caption">FIG 1-1 · 인플루언서 크롤링 분석</div>
+      </div>
+      <div class="ui-mockup">
+        <img src="images/STEP%2001-2.png" alt="STEP 01 - 페르소나 도출" />
+        <div class="ui-mockup-caption">FIG 1-2 · 페르소나 자동 매칭</div>
       </div>
     </div>
   </section>
@@ -780,9 +850,9 @@
         <span class="dot-emerald"></span>
         <span class="eyebrow-strong">MODULE 04 / 인플루언서 컨텐츠 대시보드</span>
       </div>
-      <h2 class="display-lg">크리에이터 콘텐츠를 한 화면에서 추적합니다</h2>
+      <h2 class="display-lg">콘텐츠를 한 화면에서 확인 가능합니다</h2>
       <p class="body-md ink-mute">
-        시딩된 콘텐츠와 자사 태그 UGC를 인플루언서 단위로 묶어, 성과와 인사이트를 즉시 확인합니다.
+        시딩된 콘텐츠와 자사 태그 UGC, 뷰티 UGC를 한 화면에서 확인하고, 영상과 댓글 분석을 통해 인사이트를 확인합니다.
       </p>
     </div>
 
@@ -791,245 +861,15 @@
         <div class="eyebrow" style="margin-bottom: 12px;">VIEW 01</div>
         <div class="heading-lg" style="margin-bottom: 8px;">인플루언서별 콘텐츠 뷰</div>
         <p class="body-md ink-mute">
-          각 인플루언서가 업로드한 콘텐츠를 한곳에 모아 캠페인 진행 현황과 톤을 한눈에 확인합니다.
+          인플루언서가 업로드한 시딩 콘텐츠를 한곳에 모아 캠페인 진행 현황과 톤을 한눈에 확인합니다.
         </p>
       </div>
       <div class="card">
         <div class="eyebrow" style="margin-bottom: 12px;">VIEW 02</div>
         <div class="heading-lg" style="margin-bottom: 8px;">콘텐츠 성과 메트릭</div>
         <p class="body-md ink-mute">
-          조회수·인게이지먼트·별점 지표를 시각화해 우수 콘텐츠와 다음 캠페인 시드 후보를 발굴합니다.
+          조회수·인게이지먼트를 추적하고 영상&댓글 분석을 통해 인사이트까지 확인 가능합니다. 해당 인사이트는 다음 캠페인으로 확인 가능합니다.
         </p>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- PART 02: System Pipeline -->
-  <section id="part-02" class="section-py" style="display: flex; flex-direction: column; gap: 56px;">
-    <div style="display: flex; align-items: flex-start; gap: 24px; flex-wrap: wrap;">
-      <div class="step-num">02</div>
-      <div style="display: flex; flex-direction: column; gap: 12px; flex: 1; min-width: 280px;">
-        <div class="module-label-row">
-          <span class="dot-emerald"></span>
-          <span class="eyebrow-strong">PART 02 · System Pipeline</span>
-        </div>
-        <h2 class="display-lg">데이터 기반 마케팅<br />자동화 선순환 워크플로우</h2>
-        <p class="body-md ink-mute" style="max-width: 720px;">
-          트렌드 감지부터 성과 검증까지, 5단계 파이프라인으로 캠페인 전 과정을 데이터에 근거해 설계하고 분석합니다.
-        </p>
-      </div>
-    </div>
-
-    <!-- STEP 01 -->
-    <div style="display: flex; flex-direction: column; gap: 24px;">
-      <div style="display: flex; align-items: flex-start; gap: 20px;">
-        <div class="step-num">01</div>
-        <div style="flex: 1;">
-          <div class="eyebrow" style="margin-bottom: 6px;">STEP 01</div>
-          <h3 class="display-md" style="margin-bottom: 12px;">인플루언서 발굴 및 트렌드 감지</h3>
-          <p class="body-md ink-mute" style="max-width: 820px;">
-            타사 및 자사 인플루언서를 크롤링한 데이터를 AI가 심층 분석하여 페르소나를 도출합니다.
-            이후 캠페인 진행 시 제품 소구에 가장 적합한 인플루언서를 제안합니다.
-          </p>
-          <div class="tag-row" style="margin-top: 16px;">
-            <span class="micro-tag">crawler</span>
-            <span class="micro-tag">persona-extraction</span>
-            <span class="micro-tag">trend-detection</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="mockup-stack">
-        <div class="ui-mockup">
-          <img src="images/STEP%2001-1.png" alt="STEP 01 - 인플루언서 크롤링" />
-          <div class="ui-mockup-caption">FIG 1-1 · 인플루언서 크롤링 분석</div>
-        </div>
-        <div class="ui-mockup">
-          <img src="images/STEP%2001-2.png" alt="STEP 01 - 페르소나 도출" />
-          <div class="ui-mockup-caption">FIG 1-2 · 페르소나 자동 매칭</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="heading-lg" style="margin-bottom: 8px;">뷰티 트렌드 감지 및 활용</div>
-        <p class="body-md ink-mute" style="margin-bottom: 20px;">
-          SNS 채널별 뷰티 키워드를 AI가 크롤링·분류하여, 지금 뜨고 있는 콘텐츠를 실무자에게 공유하고 캠페인 소재 컨셉으로 반영합니다.
-        </p>
-        <div class="mockup-stack">
-          <div class="ui-mockup">
-            <img src="images/STEP01-3.png" alt="트렌드 감지 예시 3" />
-            <div class="ui-mockup-caption">FIG 1-3 · 트렌드 키워드 클러스터</div>
-          </div>
-          <div class="ui-mockup">
-            <img src="images/STEP%2001-4.png" alt="트렌드 감지 예시 4" />
-            <div class="ui-mockup-caption">FIG 1-4 · 소재 자산화 뷰</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- STEP 02 -->
-    <div style="display: flex; flex-direction: column; gap: 24px;">
-      <div style="display: flex; align-items: flex-start; gap: 20px;">
-        <div class="step-num">02</div>
-        <div style="flex: 1;">
-          <div class="eyebrow" style="margin-bottom: 6px;">STEP 02</div>
-          <h3 class="display-md" style="margin-bottom: 12px;">P.D.A 프레임워크 기반 맞춤형 소재 전략 세팅</h3>
-          <p class="body-md ink-mute" style="max-width: 820px;">
-            브랜드 DNA와 제품 기획안을 기반으로 P(페르소나) × D(욕구) × A(인지단계) 매트릭스를 조합하여 캠페인 컨셉을 빈틈없이 도출합니다.
-            '누구에게 어떤 욕구를 어떻게 후킹할지'를 설계합니다.
-          </p>
-          <div class="tag-row" style="margin-top: 16px;">
-            <span class="micro-tag">pda-matrix</span>
-            <span class="micro-tag">funnel-mapping</span>
-            <span class="micro-tag">concept-generation</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="heading-lg" style="margin-bottom: 16px;">핵심 기능</div>
-        <table class="data-table">
-          <thead><tr><th>기능</th><th>설명</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Persona × Desire</strong></td><td>고객 유형(프로필/행동) 및 감정을 자극하는 소구점(Trigger) 설계</td></tr>
-            <tr><td><strong>Awareness 인지단계 매핑</strong></td><td>P×D 매트릭스 기반 TOFU(미인지) / MOFU(인지) / BOFU(구매고려) 퍼널별 구분</td></tr>
-            <tr><td><strong>컨셉 매트릭스</strong></td><td>P × D × A 조합에서 콘텐츠 컨셉 자동 생성</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="mockup-stack">
-        <div class="ui-mockup">
-          <img src="images/STEP%2002-1.png" alt="STEP 02-1" />
-          <div class="ui-mockup-caption">FIG 2-1 · PDA 매트릭스 생성</div>
-        </div>
-        <div class="ui-mockup">
-          <img src="images/STEP%2002-2.png" alt="STEP 02-2" />
-          <div class="ui-mockup-caption">FIG 2-2 · 컨셉 조합 결과</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- STEP 03 -->
-    <div style="display: flex; flex-direction: column; gap: 24px;">
-      <div style="display: flex; align-items: flex-start; gap: 20px;">
-        <div class="step-num">03</div>
-        <div style="flex: 1;">
-          <div class="eyebrow" style="margin-bottom: 6px;">STEP 03</div>
-          <h3 class="display-md" style="margin-bottom: 12px;">AI 전략 생성 및 콘텐츠 가이드 제작</h3>
-          <p class="body-md ink-mute" style="max-width: 820px;">
-            세팅된 P.D.A 컨셉을 바탕으로 채널·예산 전략, 내러티브 아크(단계별 업로드 시점)를 설계하고 AI가 시딩 가이드를 생성하는 '콘텐츠 공장' 단계입니다.
-          </p>
-          <div class="tag-row" style="margin-top: 16px;">
-            <span class="micro-tag">narrative-arc</span>
-            <span class="micro-tag">nanobana-pro</span>
-            <span class="micro-tag">kling-3.0</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="heading-lg" style="margin-bottom: 16px;">핵심 기능</div>
-        <table class="data-table">
-          <thead><tr><th>기능</th><th>설명</th></tr></thead>
-          <tbody>
-            <tr><td><strong>AI 통합 전략 · 가이드</strong></td><td>SNS 채널 · 핵심 메시지 · 업로드 타이밍 · 예산 배분 전략 자동 생성</td></tr>
-            <tr><td><strong>내러티브 아크</strong></td><td>Tease → Launch → Spread → LastCall 단계별 업로드 시점 설계</td></tr>
-            <tr><td><strong>AI 이미지 · 영상 가이드</strong></td><td>시나리오 기반 AI 이미지(Nanobana Pro) → AI 영상(Kling 3.0) 자동 제작</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
-        <div class="ui-mockup">
-          <img src="images/STEP%2003-1.png" alt="STEP 03-1" />
-          <div class="ui-mockup-caption">FIG 3-1 · 전략 생성</div>
-        </div>
-        <div class="ui-mockup">
-          <img src="images/STEP%2003%20-2.png" alt="STEP 03-2" />
-          <div class="ui-mockup-caption">FIG 3-2 · 내러티브 아크</div>
-        </div>
-        <div class="ui-mockup">
-          <img src="images/STEP%2003-3.png" alt="STEP 03-3" />
-          <div class="ui-mockup-caption">FIG 3-3 · AI 이미지 가이드</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- STEP 04 -->
-    <div style="display: flex; flex-direction: column; gap: 24px;">
-      <div style="display: flex; align-items: flex-start; gap: 20px;">
-        <div class="step-num">04</div>
-        <div style="flex: 1;">
-          <div class="eyebrow" style="margin-bottom: 6px;">STEP 04</div>
-          <h3 class="display-md" style="margin-bottom: 12px;">콘텐츠 타임라인 통합 관리 및 실시간 광고 전환</h3>
-          <p class="body-md ink-mute" style="max-width: 820px;">
-            섭외 메일·DM 발송부터 콘텐츠 업로드 타임라인 조율, 제품 발송까지 시스템 내에서 일원화합니다.
-            바이럴 조짐이 보이는 '초고효율 소재' 감지 시 즉시 메타 스폰서드 광고로 전환할 수 있도록 담당자에게 자동 알림을 발송합니다.
-          </p>
-          <div class="tag-row" style="margin-top: 16px;">
-            <span class="micro-tag">timeline-sync</span>
-            <span class="micro-tag">organic-signal</span>
-            <span class="micro-tag">auto-boost</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="mockup-stack">
-        <div class="ui-mockup">
-          <img src="images/STEP%2004-1.png" alt="STEP 04-1" />
-          <div class="ui-mockup-caption">FIG 4-1 · 타임라인 통합 관리</div>
-        </div>
-        <div class="ui-mockup">
-          <img src="images/STEP%2004-2.png" alt="STEP 04-2" />
-          <div class="ui-mockup-caption">FIG 4-2 · 실시간 광고 전환 알림</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- STEP 05 -->
-    <div style="display: flex; flex-direction: column; gap: 24px;">
-      <div style="display: flex; align-items: flex-start; gap: 20px;">
-        <div class="step-num">05</div>
-        <div style="flex: 1;">
-          <div class="eyebrow" style="margin-bottom: 6px;">STEP 05</div>
-          <h3 class="display-md" style="margin-bottom: 12px;">성과 검증 및 자동 최적화 — 콘텐츠 엔진 2.0</h3>
-          <p class="body-md ink-mute" style="max-width: 820px;">
-            성과를 분석하고 자산화하여 다음 캠페인을 준비하는 '학습' 단계입니다.
-            P.D.A 히트맵으로 효율을 분석하고, 피로도가 쌓인 소재는 즉시 교체하며 성공한 소재는 글로벌 채널로 증폭시킵니다.
-          </p>
-          <div class="tag-row" style="margin-top: 16px;">
-            <span class="micro-tag">pda-heatmap</span>
-            <span class="micro-tag">fatigue-detection</span>
-            <span class="micro-tag">channel-rebalance</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="heading-lg" style="margin-bottom: 16px;">핵심 기능</div>
-        <table class="data-table">
-          <thead><tr><th>핵심 기능</th><th>실무 적용 포인트</th></tr></thead>
-          <tbody>
-            <tr><td><strong>P.D.A 히트맵 · 실시간 KPI</strong></td><td>P×D×A 전략별 성과 히트맵 시각화 및 노출/인게이지먼트 실시간 추적</td></tr>
-            <tr><td><strong>피로도 감지 · 크리에이티브 교체</strong></td><td>오디언스 피로도 경고 알림 및 효율 저하 소재 자동 교체 제안</td></tr>
-            <tr><td><strong>채널 리밸런싱</strong></td><td>실시간 예산 재배분 및 우수 시딩 콘텐츠 수확 → 큐레이션 → 증폭 사이클 구축</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="mockup-stack">
-        <div class="ui-mockup">
-          <img src="images/STEP%2005-1.png" alt="STEP 05-1" />
-          <div class="ui-mockup-caption">FIG 5-1 · P.D.A 히트맵</div>
-        </div>
-        <div class="ui-mockup">
-          <img src="images/STEP%2005-2.png" alt="STEP 05-2" />
-          <div class="ui-mockup-caption">FIG 5-2 · 자동 최적화 패널</div>
-        </div>
       </div>
     </div>
   </section>
@@ -1174,7 +1014,7 @@
       </div>
       <div style="display: flex; justify-content: space-between; width: 100%; flex-wrap: wrap; gap: 16px;">
         <p class="caption ink-mute">F&CO Influencer Seeding Dashboard v2.0 — Strategic Report</p>
-        <p class="eyebrow">F&F AX 마케팅팀 · 김효은 · 2026.03.16</p>
+        <p class="eyebrow">F&F AX 마케팅팀 · 김효은 · 2026.05.13</p>
       </div>
     </div>
   </footer>
